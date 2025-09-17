@@ -1,0 +1,1 @@
+export type SearchParams = { search_name?: string; search_position?: string; search_team?: string };
