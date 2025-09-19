@@ -1,11 +1,9 @@
 import cors from 'cors';
 
 
-const ACCEPTED_ORIGINS = [
-  'http://localhost:3000',
-  'http://localhost:5173',
-  'https://tu-dominio.com'
-];
+const ACCEPTED_ORIGINS = process.env.ACCEPTED_ORIGINS
+    ? process.env.ACCEPTED_ORIGINS.split(',').map(origin => origin.trim())
+    : [];
 
 export const corsMiddleware = ({acceptedOrigins = ACCEPTED_ORIGINS} = {}) => cors({
     origin: (origin,callback)=>{
